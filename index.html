@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bardle</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="imgs/logo.ico" />
+    <link rel="icon" type="image/png" href="imgs/logo.png" />
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="header-left-group">
+            <a href="#" id="logoLink"><img src="imgs/logo.png" alt="Logo Bardle" class="logo-header" /></a>
+            <h1>B A R D L E</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hero">Jogar</a></li>
+                <li><a href="#benefits">Estatísticas</a></li>
+                <li><a href="#testimonials">Funcionalidades</a></li>
+                <li><a href="#cta-form">Newsletter</a></li>
+            </ul>
+        </nav>
+        <button id="themeToggleButton">☀️</button>
+    </header>
+
+    <main>
+        <section id="gameContainer" class="game-container" style="display:none;">
+            <div class="left-panel">
+                <div id="timer">Tempo restante: 0s</div>
+                <hr />
+                <div id="songCover"><img id="songImage" src="" alt="Capa da Música" /></div>
+                <div id="lyric">Qual o nome da música?</div>
+                <div class="options" id="options"></div>
+                <div id="feedback"></div>
+                <button id="nextButton" style="display: none;">Próxima</button>
+            </div>
+            <div class="right-panel">
+                <div class="artist-info">
+                    <img id="artistImage" src="" alt="Artista" />
+                    <h2 id="artistName">Nome Artista</h2>
+                </div>
+                <div class="song-info" id="songInfo">
+                    <div class="song-details">
+                        <hr />
+                        <h3 id="songTitle">---</h3> 
+                        <p id="songGenres"></p>
+                        <p id="songDate"></p>
+                        <p id="songAlbum"></p>
+                        <hr />
+                    </div>
+                </div>
+                <div class="progress-bars" id="progressBars"></div>
+                <div id="partialScore">Pontuação Parcial: <b>0</b></div>
+            </div>
+            <button id="pauseButton" style="display:none;">⏸</button>
+        </section>
+
+        <section class="hero-section" id="hero">
+            <div class="hero-text">
+                <img src="imgs/logo.png" alt="Logo Bardle" class="logo">
+                <h1>Boas vindas ao <b>Bardle!</b></h1>
+                <p>Certifique-se de colocar seus fones de ouvido ou aumentar o volume de suas caixas de som, o nosso jogo REQUER SUA AUDIÇÃO!!!</p>
+                <button id="startButton">Iniciar Jogo</button>
+            </div>
+
+            <div>
+                <div>
+                    <h2>Como Jogar?</h2>
+                    <p>1. Uma música começará a tocar por um curto período.</p>
+                    <p>2. Você terá algumas opções de títulos de músicas para escolher.</p>
+                    <p>3. Selecione o título que você acredita ser o correto.</p>
+                    <p>4. Quanto mais rápido você responder corretamente, mais pontos você ganha!</p>
+                    <p>5. O jogo consiste em 10 perguntas. Tente acertar o máximo que puder!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="info-section">
+            <h2>Estatísticas <span id="current-date"></span></h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="icon-box">🎮</div>
+                    <div>
+                        <h3 class="stat-number">1.337</h3>
+                        <p class="stat-label">Jogados Hoje</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon-box">🏆</div>
+                    <div>
+                        <h3 class="stat-number">2.077</h3>
+                        <p class="stat-label">Maior Pontuação</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="icon-box">💀</div>
+                    <div>
+                        <h3 class="stat-number-difficult">Médio</h3>
+                        <p class="stat-label">Dificuldade</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <h2>Beneficios</h2>
+            <blockquote><b>Desafie seu Conhecimento Musical:</b> Teste sua memória e seu ouvido com letras e músicas de diversos gêneros.</blockquote>
+            <blockquote><b>Descubra Novas Músicas e Artistas:</b> Amplie seu repertório musical ao jogar e aprender sobre novas faixas.</blockquote>
+            <blockquote><b>Aperfeiçõe seu Inglês:</b> Treine através da interpretação e compreensão de letras.</blockquote>
+        </section>
+
+        <section id="cta-form" class="cta-form-section">
+            <h2>Inscreva-se para receber atualizações e novidades sobre o Bardle!</h2>
+            <form id="signupForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome" required />
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required />
+                <label for="country">País:</label>
+                <select id="country" name="country" required>
+                    <option value="">Selecione seu país</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="BR">Brasil</option>
+                    <option value="CA">Canadá</option>
+                    <option value="GB">Reino Unido</option>
+                    <option value="DE">Alemanha</option>
+                    <option value="FR">França</option>
+                    <option value="ES">Espanha</option>
+                    <option value="AR">Argentina</option>
+                    <option value="PT">Portugal</option>
+                    <option value="MX">México</option>
+                </select>
+                <button type="submit">Cadastrar</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </section>
+
+    <div id="pausePopup" class="pause-popup" style="display:none;">
+        <div class="pause-content">
+            <h2>JOGO PAUSADO!</h2>
+            <button id="resumeButton">Resumir Partida</button>
+        </div>
+    </div>
+
+    <div id="gameOverPopup" class="game-over-popup" style="display:none;">
+        <div class="game-over-content">
+            <img src="imgs/yoshi.gif" alt="Logo Bardle" class="logo" />
+            <h2>Fim de Jogo!</h2>
+            <p>Sua pontuação final: <span id="finalScore">0</span></p>
+            <p>Acertos: <span id="correctAnswers">0</span></p>
+            <p>Erros: <span id="incorrectAnswers">0</span></p>
+            <p>Obrigado por jogar!</p>
+            <button id="restartButton">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <div class="scroll-buttons">
+        <button id="scrollToTop" class="top-button">↑</button>
+        <a href="https://x.com" target="_blank">
+            <button id="goToOtherPage" class="twitter-button">
+                <img src="imgs/twitter.png" alt="Twitter" class="twitter-icon" />
+            </button>
+        </a>
+    </div>
+
+    </main>
+
+    <footer>
+        <img src="imgs/logo.png" alt="Logo Bardle" class="logo-footer"/>
+        <a>© 2025 Bardle.</a>
+        <br>
+        <a>Powered By: <b>Thanatos ツ</b></a>
+        <br>
+        <a>Esse jogo não possui fins lucrativos, portanto não temos nenhuma das licenças musicais aqui presentes.</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

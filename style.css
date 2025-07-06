@@ -1,0 +1,859 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fontes e corpo */
+body {
+    font-family: 'Cal Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.6;
+    background-color: #000;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+    background-color: #1e1e1e;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+footer b {
+    color: #81830c;
+}
+
+/* Botões padrão com efeito de brilho e escala */
+.options button,
+button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
+    z-index: 1;
+    padding: 8px;
+    border: none;
+    background-color: #fe0000c7;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Cal Sans', sans-serif;
+    font-size: 14px;
+}
+
+.options button::before,
+button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 0%, transparent 70%);
+    animation: glow-rotate 4s linear infinite;
+    z-index: -1;
+}
+
+.options button:hover,
+button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.4);
+    background-color: #fe000073;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #999;
+}
+
+@keyframes glow-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Temas e fundos */
+
+body.game-background {
+    background: url("imgs/background.jpeg") center/cover no-repeat fixed;
+    position: relative;
+}
+
+body.game-background::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.685);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.game-background.light-theme::before {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme {
+    background: #f5f5f5;
+    color: #000000;
+}
+
+body.light-theme header.main-header,
+body.light-theme footer {
+    background-color: #e2d9d9;
+    color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+}
+
+body.light-theme header a {
+    color: #000000c7;
+    text-shadow: rgb(255, 4, 4) 2px 2px 4px;
+}
+
+body.light-theme .hero-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url("imgs/welcome.png") center/cover no-repeat;
+}
+
+body.light-theme .testimonials-section blockquote {
+    background-color: #ccc0c0;
+    border-left: 5px solid #ea0000;
+}
+
+body.light-theme .game-container {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("imgs/background_container_light.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+body.light-theme .pause-popup {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('imgs/pause_background.jpeg');
+}
+
+body.light-theme .game-over-content p,
+body.light-theme .game-over-content h2{
+    color: #000000;
+}
+
+body.light-theme .pause-content,
+body.light-theme .game-over-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000000;
+}
+
+body.light-theme .right-panel {
+    border-left: rgb(0, 0, 0) 2px    solid;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Header */
+header.main-header {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header.main-header h1 {
+    font-size: 1.8rem;
+    color: #fe0000c7;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: rgba(255, 0, 0, 0.829) 1px 1px 2px;
+}
+
+/* Navegação */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    flex-grow: 1;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    text-shadow: rgba(255, 0, 0, 0.829) 2px 2px 4px;
+}
+
+.nav-links.hidden {
+    display: none;
+}
+
+.nav-links li a {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #fe000073;
+}
+
+/* Botão de tema */
+#themeToggleButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    background-color: #420303c7;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#themeToggleButton:hover {
+    background-color: #fe000073;
+    transform: scale(1.05);
+}
+
+/* Logos */
+.logo-header,
+.logo-footer {
+    display: block;
+    height: 50px;
+}
+
+.logo-footer {
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Hero */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(34, 34, 34, 0.9)), url("imgs/welcome.png") center/cover no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero-text {
+    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 b {
+    font-size: 2.8rem;
+    color: red;
+    text-shadow: rgba(255, 0, 0, 0.829) 1px 1px 2px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-text .logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Info e estatísticas */
+.info-section,
+.testimonials-section,
+.cta-form-section {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: auto;
+    border-bottom: 4px solid #fe0000c7;
+}
+
+.info-section h2,
+.testimonials-section h2,
+.cta-form-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fe0000c7;
+}
+
+.info-section ul {
+    list-style: disc inside;
+    font-size: 1.1rem;
+    padding-left: 15px;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #383636;
+    border-radius: 16px;
+    padding: 20px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.icon-box {
+    font-size: 2rem;
+    background: #222121;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.stat-number {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #e75757;
+    font-weight: bold;
+}
+
+.stat-number-difficult {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fffb00;
+    font-weight: bold;
+}
+
+.stat-label {
+    margin: 0;
+    color: #000;
+}
+
+#benefits h2 span {
+    font-size: 0.8em;
+    color: #999;
+    margin-left: 10px;
+}
+
+/* Depoimentos */
+.testimonials-section blockquote {
+    background-color: #1f1f1f;
+    border-left: 5px solid #fe000073;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.testimonials-section b {
+    color: rgb(214, 15, 15);
+}
+
+/* Formulário */
+.cta-form-section form {
+    font-family: 'Cal Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.cta-form-section form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+.cta-form-section input {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cta-form-section select {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #fff;
+    margin-bottom: 15px;
+    appearance: none; /* Remove default browser styling for select */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+body.light-theme .cta-form-section input {
+    background-color: #bba1a1;
+    border: 1px solid #ccc;
+    color: #000000;
+}
+
+body.light-theme .cta-form-section select {
+    background-color: #bba1a1;
+    border: 1px solid #ccc;
+    color: #000000;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Dark arrow for light theme */
+}
+
+.cta-form-section .form-message {
+    color: #fc86a4;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.cta-form-section .form-message.error {
+    color: #f44336;
+}
+
+.cta-form-section .form-message.success {
+    color: #4caf50;
+}
+
+/* Scroll buttons */
+.scroll-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.top-button,
+.twitter-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.top-button {
+    color: black;
+    font-size: 16px;
+}
+
+.top-button:hover {
+    background-color: #f0f0f0;
+}
+
+body.light-theme .top-button {
+    background-color: #e0e0e0;
+}
+
+body.light-theme .top-button:hover {
+    background-color: #f59b9b;
+}
+
+.twitter-button:hover {
+    background-color: #1e2c7a;
+}
+
+.twitter-icon {
+    width: 40px;
+    height: 40px;
+}
+
+body.game-background .scroll-buttons,
+.game-over-popup .scroll-buttons {
+    display: none;
+}
+
+/* Game container */
+.game-container {
+    width: 750px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("imgs/background_container.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5);
+    padding: 15px;
+    position: relative;
+    margin: 20px auto;
+    display: flex;
+}
+
+/* Panels */
+.left-panel,
+.right-panel {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+}
+
+.right-panel {
+    border-left: 2px solid #fff;
+}
+
+#lyric {
+    font-size: 16px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+#timer {
+    font-size: 22px;
+    color: #f44336;
+    margin: 8px 0 12px 0;
+}
+
+#timer.correct { color: green; }
+#timer.incorrect { color: red; }
+#timer.times-up { color: yellow; }
+
+#songCover img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-top: 15px;
+    border: 3px solid #fe0000c7;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgb(255, 0, 76);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.options button.correct {
+    background-color: green;
+    color: white;
+}
+
+.options button.incorrect {
+    background-color: red;
+    color: white;
+}
+
+#pauseButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    line-height: 35px;
+    display: none;
+}
+
+#nextButton {
+    margin: 15px auto 0 auto;
+    width: 80px;
+    display: block;
+}
+
+#feedback {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* Artist */
+.artist-info img {
+    width: 50%;
+    height: auto;
+    margin-bottom: 8px;
+    border: 3px solid #fe0000c7;
+    border-radius: 100px;
+    box-shadow: 0 0 8px rgb(255, 0, 76);
+    object-fit: contain;
+}
+
+.artist-info h2 {
+    letter-spacing: 1px;
+    color: #fe0000;
+    margin-top: 1px;
+    padding-top: 1px;
+}
+
+/* Song info */
+.song-info {
+    margin-top: 15px;
+    display: block;
+}
+
+.song-details h3 {
+    font-size: 22px;
+    margin: 8px 0 15px 0;
+}
+
+.song-details p {
+    font-size: 14px;
+    margin: 4px 0 15px 0;
+}
+
+/* Progress bars */
+.progress-bars {
+    display: flex;
+    gap: 4px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.progress-bar {
+    width: 15px;
+    height: 15px;
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.progress-bar.completed {
+    background-color: red;
+}
+
+.progress-bar.completed-correct {
+    background-image: url('imgs/green.jpg');
+    background-size: cover;
+}
+
+.progress-bar.completed-incorrect {
+    background-image: url('imgs/red.jpg');
+}
+
+.progress-bar.current {
+    background-image: url('imgs/gold.jpg');
+    width: 10%;
+}
+
+#partialScore {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Popups (pause, game over) */
+.full-screen-popup,
+.pause-popup,
+.game-over-popup {
+    display: flex;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 120px);
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pause-popup {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('imgs/pause_background.jpeg');
+    display: none;
+}
+
+.pause-content {
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    width: 500px;
+}
+
+.pause-popup h2 {
+    color: #fe0000;
+}
+
+.pause-popup button {
+    background-color: #fe000073;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+}
+
+.pause-popup button:hover {
+    background-color: #fe0000;
+}
+
+.game-over-popup {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imgs/gameover.png');
+    display: none;
+}
+
+.game-over-content {
+    background-color: rgba(0, 0, 0, 0.486);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    width: 500px;
+}
+
+.game-over-content h2,
+.game-over-content p {
+    color: white;
+}
+
+.game-over-content button {
+    background-color: #ff0000;
+}
+
+.game-over-content button:hover {
+    background-color: #910d0d;
+}
+
+.game-over-content .logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Áudio escondido */
+audio {
+    display: none;
+}
+
+/* Efeitos fade */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Utilitários */
+.hidden {
+    display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1e1e1e;
+        padding: 10px;
+    }
+
+    body.light-theme .nav-links {
+        background-color: #fff;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .game-container {
+        width: 100%;
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        flex: 1 1 100%;
+    }
+
+    .right-panel {
+        border-left: none;
+        border-top: 2px solid #fff;
+    }
+
+    .cta-form-section form {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header.main-header {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .logo-header {
+        height: 40px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .cta-form-section input,
+    .cta-form-section button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .game-container {
+        padding: 10px;
+    }
+
+    #songCover img,
+    .artist-info img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+html{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
