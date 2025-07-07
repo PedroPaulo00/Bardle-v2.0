@@ -28,7 +28,7 @@ const themeToggleButton = document.getElementById('themeToggleButton');
 const heroSection = document.getElementById('hero');
 const benefitsSection = document.getElementById('benefits');
 const testimonialsSection = document.getElementById('testimonials');
-const ctaSection = document.getElementById('cta-form'); // Renomeado para 'ctaSection' para consistência
+const ctaSection = document.getElementById('cta-form'); 
 const signupForm = document.getElementById('signupForm');
 const formMessage = document.getElementById('formMessage');
 const navLinks = document.querySelector('.nav-links');
@@ -46,10 +46,11 @@ let incorrectGuesses = 0;
 const totalQuestions = 10;
 let gameActive = false;
 
-// Data de hoje
+//data de hoje
 document.getElementById('current-date').textContent =
     new Date().toLocaleDateString('pt-BR');
 
+//musicas
 const songs = [
     {
         artist: 'Sleep Theory',
@@ -183,6 +184,7 @@ const songs = [
     }
 ];
 
+//sortear musicas
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -191,6 +193,7 @@ function shuffle(array) {
     return array;
 }
 
+//trocar tema claro e escuro
 function toggleTheme() {
     document.body.classList.toggle('light-theme');
     const isLightTheme = document.body.classList.contains('light-theme');
@@ -198,6 +201,7 @@ function toggleTheme() {
     localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
 }
 
+//aplica o tema salvo ao carregar a página
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
@@ -209,35 +213,37 @@ function applySavedTheme() {
     }
 }
 
+//rolar para o topo da página
 document.getElementById('scrollToTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+//começar o jogo
 function startGame() {
     gameActive = true;
-    // Oculta as seções da landing page
+    //oulta as seções da landing page
     heroSection.style.display = 'none';
     benefitsSection.style.display = 'none';
     testimonialsSection.style.display = 'none';
     ctaSection.style.display = 'none'; // Esconde toda a seção CTA, incluindo o h2 e formulário
     
-    // Mostra o container do jogo
+    //mostra o container do jogo
     gameContainer.style.display = 'flex';
     pauseButton.style.display = 'block';
     
-    // Esconde os links de navegação na header
+    //esconde os links de navegação na header
     navLinks.classList.add('hidden');
     
-    // Adiciona a classe para o background do jogo
+    //adiciona a classe para o background do jogo
     document.body.classList.add('game-background');
     
     shuffle(songs);
     currentSongIndex = 0;
     isPaused = false;
-    loadQuestion();
-    
+    loadQuestion();   
 }
 
+//carregar a pergunta
 function loadQuestion() {
     if (currentSongIndex >= totalQuestions) {
         endGame();
@@ -260,7 +266,6 @@ function loadQuestion() {
     updateProgressBars();
     updatePartialScore();
 
-    // Reset song info display
     artistImage.src = song.artistImage;
     artistName.textContent = song.artist;
     songImage.src = song.cover;
@@ -278,6 +283,7 @@ function loadQuestion() {
         optionsContainer.appendChild(button);
     });
 
+    //reseta o timer
     clearInterval(timer);
     if (gameActive && !isPaused) {
         timer = setInterval(() => {
@@ -300,6 +306,7 @@ function loadQuestion() {
     nextButton.style.display = 'none';
 }
 
+//verifica a resposta
 function checkAnswer(selected, correct, duration) {
     if (!isPaused) {
         clearInterval(timer);
@@ -328,13 +335,14 @@ function checkAnswer(selected, correct, duration) {
             incorrectGuesses++;
             currentSong.answeredCorrectly = false;
         }
-        songTitle.textContent = correct; // Show song title
+        songTitle.textContent = correct;
         nextButton.style.display = 'block';
         updatePartialScore();
         updateProgressBars();
     }
 }
 
+//desabilita as opções e destaca a resposta correta
 function disableOptions(correctAnswer = null) {
     const buttons = optionsContainer.getElementsByTagName('button');
     for (let button of buttons) {
@@ -347,6 +355,7 @@ function disableOptions(correctAnswer = null) {
     }
 }
 
+//próxima pergunta
 function nextQuestion() {
     if (!isPaused) {
         audioPlayer.pause();
@@ -359,6 +368,7 @@ function nextQuestion() {
     }
 }
 
+//atualiza as barras de progresso
 function updateProgressBars() {
     progressBars.innerHTML = '';
     for (let i = 0; i < totalQuestions; i++) {
@@ -369,7 +379,6 @@ function updateProgressBars() {
         } else if (songs[i].answeredCorrectly === false) {
             bar.classList.add('completed-incorrect');
         } else if (i < currentSongIndex && songs[i].answeredCorrectly === null) {
-            // This case should ideally not be reached if answeredCorrectly is always set
             bar.classList.add('completed');
         }
         if (i === currentSongIndex) bar.classList.add('current');
@@ -377,10 +386,12 @@ function updateProgressBars() {
     }
 }
 
+//atualiza a pontuação parcial
 function updatePartialScore() {
     partialScoreDisplay.textContent = `Pontuação Parcial: ${partialScore}`;
 }
 
+//finaliza o jogo
 function endGame() {
     clearInterval(timer);
     audioPlayer.pause();
@@ -391,10 +402,11 @@ function endGame() {
     correctAnswersDisplay.textContent = correctGuesses;
     incorrectAnswersDisplay.textContent = incorrectGuesses;
     gameOverPopup.style.display = 'flex';
-    navLinks.classList.add('hidden'); // Manter os links de navegação ocultos
-    document.body.classList.remove('game-background'); // Remove o background do jogo
+    navLinks.classList.add('hidden'); //mnter os links de navegação ocultos
+    document.body.classList.remove('game-background'); //remove o background do jogo
 }
 
+//reseta o jogo
 function resetGame() {
     currentSongIndex = 0;
     score = 0;
@@ -407,22 +419,23 @@ function resetGame() {
     gameContainer.style.display = 'none';
     pauseButton.style.display = 'none';
 
-    // Torna as seções da landing page visíveis novamente
+    //torna as seções da landing page visíveis novamente
     heroSection.style.display = 'flex'; // 'flex' porque é o display original da hero-section
     benefitsSection.style.display = 'block';
     testimonialsSection.style.display = 'block';
-    ctaSection.style.display = 'block'; // Mostra toda a seção CTA
+    ctaSection.style.display = 'block'; //mostra toda a seção CTA
     
-    // Mostra os links de navegação na header
+    //mostra os links de navegação na header
     navLinks.classList.remove('hidden');
 
     songs.forEach(song => song.answeredCorrectly = null);
-    document.body.classList.remove('game-background'); // Garante que o fundo volte ao normal
+    document.body.classList.remove('game-background'); //garante que o fundo volte ao normal
 
-    // Rola para o topo da página para mostrar a hero section
+    //rola para o topo da página para mostrar a hero section
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+//função para lidar com animações de rolagem
 function handleScrollAnimations() {
     const sections = [benefitsSection, testimonialsSection, ctaSection];
     const observer = new IntersectionObserver(
@@ -507,16 +520,16 @@ signupForm.addEventListener('submit', (e) => {
     }, 3000);
 });
 
-// Ajuste para o link do logo
+//ajuste para o link do logo
 logoLink.addEventListener('click', (e) => {
-    e.preventDefault(); // Impede o comportamento padrão do link
+    e.preventDefault(); //impede o comportamento padrão do link
     if (gameActive || gameOverPopup.style.display === 'flex' || pausePopup.style.display === 'flex') {
-        // Se o jogo estiver ativo, pausado ou na tela de game over, reseta o jogo
-        audioPlayer.pause(); // Pausa o áudio
-        audioPlayer.currentTime = 0; // Reseta o áudio para o início
-        resetGame(); // Chama a função para resetar o jogo e mostrar a landing page
+        //se o jogo estiver ativo, pausado ou na tela de game over, reseta o jogo
+        audioPlayer.pause(); //pausa o áudio
+        audioPlayer.currentTime = 0; //reseta o áudio para o início
+        resetGame(); //chama a função para resetar o jogo e mostrar a landing page
     } else {
-        // Se o jogo não estiver ativo, apenas rola para o topo da hero section
+        //se o jogo não estiver ativo, apenas rola para o topo da hero section
         heroSection.scrollIntoView({ behavior: 'smooth' });
     }
 });

@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
 
-/* Reset básico */
+/* reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Fontes e corpo */
 body {
     font-family: 'Cal Sans', sans-serif;
     font-weight: 400;
@@ -20,9 +19,11 @@ body {
     flex-direction: column;
 }
 
+/* Layout básico */
 main {
     flex: 1;
 }
+
 
 footer {
     margin-top: auto;
@@ -37,7 +38,7 @@ footer b {
     color: #81830c;
 }
 
-/* Botões padrão com efeito de brilho e escala */
+/* botões padrão com efeito de brilho e escala */
 .options button,
 button {
     position: relative;
@@ -86,7 +87,7 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
-/* Temas e fundos */
+/* temas e fundos */
 
 body.game-background {
     background: url("imgs/background.jpeg") center/cover no-repeat fixed;
@@ -161,13 +162,13 @@ body.light-theme .right-panel {
     border-left: rgb(0, 0, 0) 2px    solid;
 }
 
-/* Links */
+/* links */
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* Header */
+/* header */
 header.main-header {
     background-color: #1e1e1e;
     display: flex;
@@ -194,7 +195,7 @@ header.main-header h1 {
     text-shadow: rgba(255, 0, 0, 0.829) 1px 1px 2px;
 }
 
-/* Navegação */
+/* navegação */
 .nav-links {
     list-style: none;
     display: flex;
@@ -219,7 +220,7 @@ header.main-header h1 {
     color: #fe000073;
 }
 
-/* Botão de tema */
+/* notão de tema */
 #themeToggleButton {
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -236,7 +237,7 @@ header.main-header h1 {
     transform: scale(1.05);
 }
 
-/* Logos */
+/* logos */
 .logo-header,
 .logo-footer {
     display: block;
@@ -248,7 +249,7 @@ header.main-header h1 {
     padding-bottom: 10px;
 }
 
-/* Hero */
+/* hero */
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(34, 34, 34, 0.9)), url("imgs/welcome.png") center/cover no-repeat;
     height: 100vh;
@@ -288,7 +289,7 @@ header.main-header h1 {
     margin-bottom: 20px;
 }
 
-/* Info e estatísticas */
+/* info e estatísticas */
 .info-section,
 .testimonials-section,
 .cta-form-section {
@@ -363,7 +364,7 @@ header.main-header h1 {
     margin-left: 10px;
 }
 
-/* Depoimentos */
+/* depoimentos */
 .testimonials-section blockquote {
     background-color: #1f1f1f;
     border-left: 5px solid #fe000073;
@@ -376,7 +377,7 @@ header.main-header h1 {
     color: rgb(214, 15, 15);
 }
 
-/* Formulário */
+/* formulário */
 .cta-form-section form {
     font-family: 'Cal Sans', sans-serif;
     display: flex;
@@ -416,7 +417,7 @@ header.main-header h1 {
     background-color: #2a2a2a;
     color: #fff;
     margin-bottom: 15px;
-    appearance: none; /* Remove default browser styling for select */
+    appearance: none; /* remove o default do navegador pro select */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 16px;
@@ -450,7 +451,7 @@ body.light-theme .cta-form-section select {
     color: #4caf50;
 }
 
-/* Scroll buttons */
+/* botoes de rolar */
 .scroll-buttons {
     position: fixed;
     right: 20px;
@@ -506,7 +507,6 @@ body.game-background .scroll-buttons,
     display: none;
 }
 
-/* Game container */
 .game-container {
     width: 750px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("imgs/background_container.png");
@@ -520,7 +520,7 @@ body.game-background .scroll-buttons,
     display: flex;
 }
 
-/* Panels */
+/* painels */
 .left-panel,
 .right-panel {
     flex: 1;
@@ -598,7 +598,6 @@ body.game-background .scroll-buttons,
     font-weight: bold;
 }
 
-/* Artist */
 .artist-info img {
     width: 50%;
     height: auto;
@@ -616,7 +615,6 @@ body.game-background .scroll-buttons,
     padding-top: 1px;
 }
 
-/* Song info */
 .song-info {
     margin-top: 15px;
     display: block;
@@ -632,7 +630,6 @@ body.game-background .scroll-buttons,
     margin: 4px 0 15px 0;
 }
 
-/* Progress bars */
 .progress-bars {
     display: flex;
     gap: 4px;
@@ -670,7 +667,7 @@ body.game-background .scroll-buttons,
     font-size: 14px;
 }
 
-/* Popups (pause, game over) */
+/* popups (pause, game over) */
 .full-screen-popup,
 .pause-popup,
 .game-over-popup {
@@ -752,12 +749,12 @@ body.game-background .scroll-buttons,
     margin-bottom: 20px;
 }
 
-/* Áudio escondido */
+/* audio escondido */
 audio {
     display: none;
 }
 
-/* Efeitos fade */
+/* efeitos fade */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -769,12 +766,12 @@ audio {
     transform: translateY(0);
 }
 
-/* Utilitários */
+/* utilitários */
 .hidden {
     display: none;
 }
 
-/* Responsividade */
+/* responsividade */
 @media (max-width: 768px) {
     .nav-links {
         flex-direction: column;
