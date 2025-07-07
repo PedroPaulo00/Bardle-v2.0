@@ -16,7 +16,7 @@ Pedro Paulo de Lima.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-🇺🇸 NÃO possuo licença para nenhuma imagem ou música contida neste projeto.
+🇧🇷 NÃO possuo licença para nenhuma imagem ou música contida neste projeto.
 
 Este projeto foi criado sem fins lucrativos, apenas para uso pessoal.
 
