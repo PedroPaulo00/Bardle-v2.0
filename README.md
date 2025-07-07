@@ -1,9 +1,9 @@
-Para testar meu jogo via Vercel:
+EN
+
+You can test my app on Vercel:
 https://bardle-v2-0.vercel.app
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-:us: I DO NOT have a license to any image or music contained in this project.
+ 
+I DO NOT have a license to any image or music contained in this project.
 
 This project was created not-for-profit, just for personal use only.
 
@@ -16,7 +16,12 @@ Pedro Paulo de Lima.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-🇧🇷 NÃO possuo licença para nenhuma imagem ou música contida neste projeto.
+PT-BR 
+
+Para testar meu jogo via Vercel:
+https://bardle-v2-0.vercel.app
+
+NÃO possuo licença para nenhuma imagem ou música contida neste projeto.
 
 Este projeto foi criado sem fins lucrativos, apenas para uso pessoal.
 
