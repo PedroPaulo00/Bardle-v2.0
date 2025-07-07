@@ -3,7 +3,7 @@ https://bardle-v2-0.vercel.app
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-I DO NOT have a license to any image or music contained in this project.
+:us: I DO NOT have a license to any image or music contained in this project.
 
 This project was created not-for-profit, just for personal use only.
 
