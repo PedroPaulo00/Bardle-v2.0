@@ -1,6 +1,8 @@
 EN
+
 🎶 Bardle - Your Daily Musical Challenge 🎸
-Bardle is an engaging daily game where you guess the song! 🎵 Put your musical ear to the test and see how quickly you can identify the track. Can you get the perfect score today? 🎯
+
+Bardle is an engaging daily game where you guess the song! 🎵 Put your musical ear to the test and see how quickly you can identify the track. Can you get the perfect score today?🎯
 
 🕹️ Experience Bardle on Vercel: https://bardle-v2-0.vercel.app
 
@@ -9,8 +11,12 @@ Bardle is an engaging daily game where you guess the song! 🎵 Put your musical
 Best regards,
 Pedro Paulo de Lima.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 PT-BR
+
 🎶 Bardle - Seu Desafio Musical Diário 🎸
+
 O Bardle é um envolvente jogo diário onde você adivinha a música! 🎵 Coloque seu ouvido musical à prova e veja o quão rápido você consegue identificar a faixa. Consegue o placar perfeito hoje? 🎯
 
 🕹️ Experimente o Bardle no Vercel: https://bardle-v2-0.vercel.app
